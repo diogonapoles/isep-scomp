@@ -24,7 +24,10 @@ int main() {
             printf("\n");
 
             exit(0);
-        }
+        } else if (pid[i] < 0){
+			perror("FORK FALHOU!"); 
+			exit(1);
+		}
     }
 
     // parent processes
