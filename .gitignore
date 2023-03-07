@@ -26,6 +26,8 @@ dist/
 # Object Files
 *.o
 
+*main
+
 # JetBrains IDE
 .idea/
 
