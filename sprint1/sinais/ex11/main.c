@@ -1,6 +1,6 @@
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <signal.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -25,9 +25,9 @@ int main() {
   printf("Process ID: %d\n", pid);
 
   struct sigaction act;
-  
+
   memset(&act, 0, sizeof(struct sigaction)); // clean the struct
-  sigfillset(&act.sa_mask); 
+  sigfillset(&act.sa_mask);
   act.sa_handler = signal_handler;
   act.sa_flags = 0;
 
@@ -44,6 +44,7 @@ int main() {
   return 0;
 }
 
-// All signals are blocked except for signals 9 and 17. 
-// Signals 9 (SIGKILL) and 17 (SIGSTOP) cannot be blocked or unblocked by a process. 
-// Therefore, they remain blocked even after the sigprocmask function is called with the SIG_UNBLOCK flag.
+// All signals are blocked except for signals 9 and 17.
+// Signals 9 (SIGKILL) and 17 (SIGSTOP) cannot be blocked or unblocked by a
+// process. Therefore, they remain blocked even after the sigprocmask function
+// is called with the SIG_UNBLOCK flag.
