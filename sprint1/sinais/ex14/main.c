@@ -35,6 +35,7 @@ int main(void)
     if (pid < 0)
     {
         perror("FORK ERROR");
+        exit(EXIT_FAILURE);
     }
     else if (pid == 0)
     {
