@@ -53,7 +53,7 @@ int spawn_childs(int n){
         if (pid<0)
         {
             return -1;
-        }else{
+        }else if(pid==0){
             return i+1;
         }
     }

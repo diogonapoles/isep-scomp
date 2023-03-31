@@ -61,3 +61,10 @@ int main(void)
 
     return 0;
 }
+
+
+/* a.
+nao é necessario sincronizacao pois a comunicacao esta a ser feita num so sentido(unidirecional). um caso que seria
+ necessario sincronizacao seria por exemplo quando dois processos estao a tentar escrever no mesmo pipe ao mesmo tempo
+*/
+
