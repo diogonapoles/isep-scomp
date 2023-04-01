@@ -15,7 +15,7 @@ volatile sig_atomic_t workers_success = 0;
 int simulate1()
 {
     srand(time(NULL) + getpid());
-    if ((rand() % 100) < 1)
+    if ((rand() % SUCCESS_RATE))
     {
         return 1;
     }
@@ -44,7 +44,6 @@ void worker_handler(int signum)
 void worker_handler_child_USR1(int signum)
 {
     simulate2();
-    exit(EXIT_SUCCESS);
 }
 
 int main(void)
@@ -120,76 +119,8 @@ int main(void)
     for (size_t i = 0; i < NUM_WORKERS; i++)
     {
         kill(pids[i], SIGKILL);
-        waitpid(pids[i], NULL, 0);
+        waitpid(-1, NULL, 0);
     }
-
-    /*
-    int success_found = 0;
-
-    for (size_t i = 0; i < NUM_WORKERS; i++)
-    {
-          int wstatus;
-          waitpid(pids[i], &wstatus, 0);
-
-          if (WEXITSTATUS(wstatus) == 1)
-          {
-              printf("Worker %ld found\n", i);
-              workers_success++;
-          }
-          workers_done++;
-
-        int wstatus;
-        waitpid(pids[i], &wstatus, 0);
-        printf("%d\n", ret);
-        if (ret == 1)
-        {
-            printf("Worker %ld found\n", i);
-            workers_success++;
-        }
-        workers_done++;
-
-        if (workers_done >= 25 && workers_success == 0)
-        {
-            printf("Inefficient algorithm!\n");
-            for (size_t i = 0; i < NUM_WORKERS; i++)
-            {
-                kill(pids[i], SIGKILL);
-            }
-            break;
-        }
-        else if (workers_success > 0 && !success_found)
-        {
-            success_found = 1;
-            for (size_t i = 0; i < NUM_WORKERS; i++)
-            {
-                kill(pids[i], SIGUSR1);
-            }
-        }
-    }
-    printf("Workers done: %d, success: %d\n", workers_done, workers_success);
-
-    for (size_t i = 0; i < NUM_WORKERS; i++)
-    {
-        wait(&status);
-    }
-
-    for (size_t i = 0; i < NUM_WORKERS; i++)
-    {
-        wait(&status);
-        if (WIFSIGNALED(status))
-        {
-            if (WTERMSIG(status) == SIGUSR1)
-            {
-                simulate2();
-            }
-            else if (WTERMSIG(status) == SIGUSR2)
-            {
-                printf("Worker %ld did not find relevant data.\n", i);
-            }
-        }
-    }
-
-    */
 
     return EXIT_SUCCESS;
 }
