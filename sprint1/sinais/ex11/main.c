@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 Diogo Nápoles
+ */
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,7 +13,7 @@ void signal_handler(int signum) {
   sigset_t set;
   sigprocmask(SIG_UNBLOCK, NULL, &set);
 
-  printf("\nBlocked signals:\n");
+  write(STDOUT_FILENO, "\nBlocked signals:\n", strlen("\nBlocked signals:\n"));
   for (int i = 1; i < NSIG; i++) {
     if (sigismember(&set, i)) {
       sprintf(print, "\t%d: Blocked\n", i);

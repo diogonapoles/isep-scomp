@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 Diogo Nápoles
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>

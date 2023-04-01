@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 Diogo Nápoles
+ */
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,8 +37,14 @@ int main(void) {
   sigemptyset(&act1.sa_mask);
   sigemptyset(&act2.sa_mask);
 
-  sigaction(SIGALRM, &act1, NULL);
-  sigaction(SIGCHLD, &act2, NULL);
+  if (sigaction(SIGALRM, &act1, NULL) < 0) {
+    perror("Sigaction failed!");
+    exit(EXIT_FAILURE);
+  }
+  if (sigaction(SIGCHLD, &act2, NULL) < 0) {
+    perror("Sigaction failed!");
+    exit(EXIT_FAILURE);
+  }
 
   pid_t pid;
   int status;
@@ -42,7 +52,7 @@ int main(void) {
     pid = fork();
     if (pid == 0) { // child process
       if (execvp(commands[i].cmd, (char *[]){commands[i].cmd, NULL}) == -1) {
-        printf("Failed to execute command: %s\n", commands[i].cmd);
+        perror("Failed to execute command");
         exit(EXIT_FAILURE);
       }
     } else if (pid > 0) { // parent process

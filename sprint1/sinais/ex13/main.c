@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 Diogo Nápoles
+ */
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,19 +17,22 @@ int main() {
   pid_t pid = fork();
   srand((unsigned)time(NULL));
 
+  if (pid == -1) {
+    perror("Fork failed!");
+    exit(EXIT_FAILURE);
+  }
+
   struct sigaction act;
   sigemptyset(&act.sa_mask);
   act.sa_flags = 0;
   act.sa_handler = handler_usr1;
+
   if (sigaction(SIGUSR1, &act, NULL) < 0) {
     perror("Sigaction failed!");
-    exit(1);
+    exit(EXIT_FAILURE);
   }
 
-  if (pid == -1) {
-    perror("Fork failed!");
-    exit(1);
-  } else if (pid == 0) { // child
+  if (pid == 0) { // child
     int task_b_time = 1 + rand() % 5;
 
     sleep(task_b_time);
