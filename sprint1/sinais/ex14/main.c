@@ -19,6 +19,7 @@ int main(void)
     int status;
 
     struct sigaction act;
+    memset(&act , 0, sizeof(struct sigaction));
 
     act.sa_handler = alarm_handler;
     sigfillset(&act.sa_mask);
