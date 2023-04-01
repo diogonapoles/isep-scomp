@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 Diogo Nápoles
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
@@ -84,6 +88,7 @@ int main() {
     wait(&status);
   }
 
+  printf("Result:\n");
   // print result array
   for (i = 0; i < ARRAY_SIZE; i++) {
     printf("%d ", result[i]);
