@@ -16,6 +16,12 @@ struct product
     float price;
     char name[20];
 };
+    typedef struct
+    {
+        size_t code;
+        size_t index ;
+    } s2;
+
 
 int main(void)
 {
@@ -29,7 +35,6 @@ int main(void)
         perror("pipe status");
         exit(EXIT_FAILURE);
     }
-
 
     for (size_t i = 0; i < N_BARCODE_READERS; i++)
     {
@@ -45,7 +50,7 @@ int main(void)
             perror("fork");
             exit(EXIT_FAILURE);
         }
-        
+
         if (pid == 0)
         {
             for (size_t j = 0; j < i; j++)
@@ -53,22 +58,25 @@ int main(void)
                 close(fd[j][WRITE]);
                 close(fd[j][READ]);
             }
-            
+
             struct product s1;
             close(fdStatus[READ]);
             srand(getpid());
             size_t value = rand() % 5;
+            s2 types;
+            types.code = value;
+            types.index = i;
 
-
-            write(fdStatus[WRITE], &value, sizeof(value));
-            write(fdStatus[WRITE], &i, sizeof(i));
+            write(fdStatus[WRITE], &types, sizeof(types));
 
             close(fd[i][WRITE]);
 
             if (read(fd[i][READ], &s1, sizeof(struct product)) > 0)
             {
                 printf("Produt id %d, name: %s, price: %.2f \n", s1.id, s1.name, s1.price);
-            }else{
+            }
+            else
+            {
                 perror("out error");
             }
 
@@ -96,28 +104,26 @@ int main(void)
     strcpy(prod[4].name, "Orange");
 
     close(fdStatus[WRITE]);
-    
-    size_t received_index = 0;
-    size_t index = 0;
+
+
     for (size_t i = 0; i < N_BARCODE_READERS; i++)
     {
-        if (read(fdStatus[READ], &received_index, sizeof(received_index)) > 0)
+        s2 types;
+        if (read(fdStatus[READ], &types, sizeof(types)) > 0)
         {
-            read(fdStatus[READ], &index, sizeof(index));
-            close(fd[index][READ]);
+            close(fd[types.index][READ]);
 
-            if(write(fd[index][WRITE], &prod[received_index], sizeof(struct product))<0){
-                
+            if (write(fd[types.index][WRITE], &prod[types.code], sizeof(struct product)) < 0)
+            {
+
                 perror("write");
             }
-            
-            close(fd[index][WRITE]);
+
+            close(fd[types.index][WRITE]);
         }
     }
 
     close(fdStatus[READ]);
-
-    
 
     for (size_t i = 0; i < N_BARCODE_READERS; i++)
     {
