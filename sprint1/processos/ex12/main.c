@@ -12,7 +12,7 @@ int spawn_childs(int n){
         pid = fork();
         if (pid<0)
         {
-            return -1;
+            exit(EXIT_FAILURE);
         }else if (pid ==0)
         {
             return i+1;
@@ -52,7 +52,7 @@ int spawn_childs(int n){
         pid = fork();
         if (pid<0)
         {
-            return -1;
+            exit(EXIT_FAILURE);;
         }else if(pid==0){
             return i+1;
         }
