@@ -7,7 +7,7 @@
 #include <string.h>
 
 #define NUM_WORKERS 50
-#define SUCCESS_RATE 25 // 1 in 25 chance of success
+#define SUCCESS_RATE 1 
 
 volatile sig_atomic_t workers_done = 0;
 volatile sig_atomic_t workers_success = 0;
@@ -24,7 +24,8 @@ int simulate1()
 }
 
 void simulate2()
-{
+{   
+    
     printf("simulate2\n");
     exit(EXIT_SUCCESS);
 }
@@ -53,10 +54,17 @@ int main(void)
     memset(&act, 0, sizeof(struct sigaction));
     act.sa_handler = worker_handler;
     sigemptyset(&act.sa_mask);
-    // act.sa_flags = 0;
 
-    sigaction(SIGUSR1, &act, NULL);
-    sigaction(SIGUSR2, &act, NULL);
+    if (sigaction(SIGUSR1, &act, NULL) < 0)
+    {
+        perror("sigaction usr1");
+        exit(EXIT_FAILURE);
+    }
+    if (sigaction(SIGUSR2, &act, NULL) < 0)
+    {
+        perror("sigaction usr2");
+        exit(EXIT_FAILURE);
+    }
 
     for (size_t i = 0; i < NUM_WORKERS; i++)
     {
@@ -72,37 +80,37 @@ int main(void)
             struct sigaction act2;
             memset(&act2, 0, sizeof(struct sigaction));
             act2.sa_handler = worker_handler_child_USR1;
-            sigfillset(&act2.sa_mask);
-            // act2.sa_flags = 0;
-            sigaction(SIGUSR1, &act2, NULL);
+            sigemptyset(&act2.sa_mask);
+            sigdelset(&act2.sa_mask, SIGUSR1);
+            if (sigaction(SIGUSR1, &act2, NULL)<0)
+            {
+                perror("sig usr1 second error");
+            }
+            
+            
             if (simulate1())
             {
                 // sleep(5);
                 kill(getppid(), SIGUSR1);
-                
             }
             else
             {
                 // sleep(5);
                 kill(getppid(), SIGUSR2);
-               
             }
             pause();
             exit(EXIT_FAILURE);
         }
     }
 
-    
-
-    while (workers_done < 25 )
+    while (workers_done < 25)
     {
-        printf("%d\n", workers_done);
         pause();
     };
 
     printf("done: %d\n", workers_done);
     printf("success: %d\n", workers_success);
-    
+
     if (workers_success > 0)
     {
         printf("Search Successful\n");
@@ -114,11 +122,14 @@ int main(void)
     else
     {
         printf("Inefficient Algorithm\n");
-    }
+        for (size_t i = 0; i < NUM_WORKERS; i++)
+        {
+            kill(pids[i], SIGKILL);
+        }
+    }   
 
     for (size_t i = 0; i < NUM_WORKERS; i++)
     {
-        kill(pids[i], SIGKILL);
         waitpid(-1, NULL, 0);
     }
 
