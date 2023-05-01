@@ -27,6 +27,8 @@ dist/
 *.o
 
 *main
+*reader
+*writer
 
 # JetBrains IDE
 .idea/
