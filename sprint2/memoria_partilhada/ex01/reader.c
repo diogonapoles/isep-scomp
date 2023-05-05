@@ -59,8 +59,8 @@ int main() {
   // delete shared memory space
   if (shm_unlink("/sharedmem") == -1) {
     perror("Error while deleting memory space");
+    exit(EXIT_FAILURE);
   }
-  exit(EXIT_SUCCESS);
 
   return 0;
 }
