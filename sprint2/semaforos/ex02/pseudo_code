@@ -1,0 +1,24 @@
+sem_t mutex = 0;
+sem_t wrt = 1;
+
+
+writer;
+
+down (wrt);
+
+writing;
+
+up (wrt);
+
+
+
+reader;
+
+down (mutex);
+
+reading;
+
+up (mutex);
+
+
+//Problema dos leitores e escritores
