@@ -1,3 +1,5 @@
+I used the synchronization of execution pattern, to guarantee a ordered print message.
+
 ```
 Open SEMAPHORES_NUMBER number of semaphores
 
