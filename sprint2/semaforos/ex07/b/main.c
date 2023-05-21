@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/_types/_pid_t.h>
+#include <sys/mman.h>
 #include <sys/semaphore.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -10,7 +11,11 @@
 #include <time.h>
 #include <unistd.h>
 
-#define NUM_CHILD 5
+#define NUM_CHILD 6
+#define CHIPS_SEM "/chips1"
+#define BEER_SEM "/beer1"
+
+#define SHM "/shm07"
 
 void up(sem_t *sem) {
   if (sem_post(sem) == -1) {
@@ -49,26 +54,49 @@ void eat_and_drink() {
   print_text("Finished eating and drinking!\n");
 }
 
+typedef struct {
+  int chips;
+  int beer;
+} food;
+
 int main() {
   srand(time(NULL));
 
+  int fd, data_size = sizeof(food);
+  food *f;
+
   sem_t *chips_sem;
   sem_t *beer_sem;
-  sem_t *mutex;
+
+  // Create and initialize shared memory
+  if ((fd = shm_open(SHM, O_CREAT | O_EXCL | O_RDWR, S_IRUSR | S_IWUSR)) ==
+      -1) {
+    perror("Shm_open failed!");
+    exit(EXIT_FAILURE);
+  }
+
+  if (ftruncate(fd, data_size) == -1) {
+    perror("Ftruncate failed!");
+    exit(EXIT_FAILURE);
+  }
+
+  if ((f = (food *)mmap(NULL, data_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd,
+                        0)) == MAP_FAILED) {
+    perror("Mmap failed!");
+    exit(EXIT_FAILURE);
+  }
+
+  f->chips = 0;
+  f->beer = 0;
 
   // Create and initialize semaphores
-  chips_sem = sem_open("/chips1", O_CREAT | O_EXCL, S_IRUSR | S_IWUSR, 0);
+  chips_sem = sem_open(CHIPS_SEM, O_CREAT | O_EXCL, S_IRUSR | S_IWUSR, 1);
   if (chips_sem == SEM_FAILED) {
     perror("Sem_open failed!");
     exit(EXIT_FAILURE);
   }
-  beer_sem = sem_open("/beer1", O_CREAT | O_EXCL, S_IRUSR | S_IWUSR, 0);
+  beer_sem = sem_open(BEER_SEM, O_CREAT | O_EXCL, S_IRUSR | S_IWUSR, 1);
   if (beer_sem == SEM_FAILED) {
-    perror("Sem_open failed!");
-    exit(EXIT_FAILURE);
-  }
-  mutex = sem_open("/mutex1", O_CREAT | O_EXCL, S_IRUSR | S_IWUSR, 1);
-  if (mutex == SEM_FAILED) {
     perror("Sem_open failed!");
     exit(EXIT_FAILURE);
   }
@@ -87,32 +115,24 @@ int main() {
       if (choice == 0) {
         // Process buys chips
         sleep(rand() % 5); // Sleep for some random time
-        down(mutex);       // Enter critical section
+        down(chips_sem);       // Enter critical section
         buy_chips();
-        up(mutex);     // Exit critical section
+        f->chips++;
         up(chips_sem); // Signal that chips are acquired
       } else {
         // Process buys beer
         sleep(rand() % 5); // Sleep for some random time
-        down(mutex);       // Enter critical section
+        down(beer_sem);       // Enter critical section
         buy_beer();
-        up(mutex);    // Exit critical section
+        f->beer++;
         up(beer_sem); // Signal that beer is acquired
       }
 
-      eat_and_drink();
-
-      if (sem_close(chips_sem) == -1) {
-        perror("Sem_close failed!");
-        exit(EXIT_FAILURE);
-      }
-      if (sem_close(beer_sem) == -1) {
-        perror("Sem_close failed!");
-        exit(EXIT_FAILURE);
-      }
-      if (sem_close(mutex) == -1) {
-        perror("Sem_close failed!");
-        exit(EXIT_FAILURE);
+      while (f->beer + f->chips != NUM_CHILD + 1) {
+        sleep(1); // Sleep for some random time
+        if ((f->beer + f->chips) == NUM_CHILD + 1 && f->beer > 0 &&
+            f->chips > 0)
+          eat_and_drink();
       }
 
       exit(EXIT_SUCCESS);
@@ -121,36 +141,31 @@ int main() {
 
   // Parent process
   sleep(rand() % 5); // Sleep for some random time
-
   int choice = (NUM_CHILD + 1) % 2;
   if (choice == 0) {
-    // Parent buys chips
-    down(mutex); // Enter critical section
+    // Process buys chips
+    sleep(rand() % 5); // Sleep for some random time
+    down(chips_sem);       // Enter critical section
     buy_chips();
-    up(mutex);     // Exit critical section
+    f->chips++;
     up(chips_sem); // Signal that chips are acquired
   } else {
-    // Parent buys beer
-    down(mutex); // Enter critical section
+    // Process buys beer
+    sleep(rand() % 5); // Sleep for some random time
+    down(beer_sem);       // Enter critical section
     buy_beer();
-    up(mutex);    // Exit critical section
+    f->beer++;
     up(beer_sem); // Signal that beer is acquired
   }
 
-  eat_and_drink();
+  while (f->beer + f->chips != NUM_CHILD + 1) {
+    sleep(1);
+    if ((f->beer + f->chips) == NUM_CHILD + 1 && f->beer > 0 && f->chips > 0)
+      eat_and_drink();
+  }
 
-  if (sem_close(chips_sem) == -1) {
-    perror("Sem_close failed!");
-    exit(EXIT_FAILURE);
-  }
-  if (sem_close(beer_sem) == -1) {
-    perror("Sem_close failed!");
-    exit(EXIT_FAILURE);
-  }
-  if (sem_close(mutex) == -1) {
-    perror("Sem_close failed!");
-    exit(EXIT_FAILURE);
-  }
+  if (f->beer == 0 || f->chips == 0)
+    printf("Not enough beer or chips!\n");
 
   // Wait for all child processes to finish
   for (int i = 0; i < NUM_CHILD; i++) {
@@ -160,16 +175,37 @@ int main() {
     }
   }
 
+  // Close and unlink shared memory
+  if (close(fd) == -1) {
+    perror("Close failed!");
+    exit(EXIT_FAILURE);
+  }
+
+  if (munmap(f, data_size) == -1) {
+    perror("Munmap failed!");
+    exit(EXIT_FAILURE);
+  }
+
+  if (shm_unlink(SHM) == -1) {
+    perror("Shm_unlink failed!");
+    exit(EXIT_FAILURE);
+  }
+
   // Close and unlink semaphores
-  if (sem_unlink("/chips1") == -1) {
+  if (sem_close(chips_sem) == -1) {
+    perror("Sem_close failed!");
+    exit(EXIT_FAILURE);
+  }
+  if (sem_close(beer_sem) == -1) {
+    perror("Sem_close failed!");
+    exit(EXIT_FAILURE);
+  }
+
+  if (sem_unlink(CHIPS_SEM) == -1) {
     perror("Sem_unlink failed!");
     exit(EXIT_FAILURE);
   }
-  if (sem_unlink("/beer1") == -1) {
-    perror("Sem_unlink failed!");
-    exit(EXIT_FAILURE);
-  }
-  if (sem_unlink("/mutex1") == -1) {
+  if (sem_unlink(BEER_SEM) == -1) {
     perror("Sem_unlink failed!");
     exit(EXIT_FAILURE);
   }
