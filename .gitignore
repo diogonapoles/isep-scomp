@@ -29,6 +29,9 @@ dist/
 *main
 *reader
 *writer
+*insert
+*consult
+*consult_all
 
 # JetBrains IDE
 .idea/

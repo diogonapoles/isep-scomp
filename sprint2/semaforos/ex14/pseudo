@@ -1,0 +1,53 @@
+Pattern in use
+We have 2 sets of processes Ax and Bx
+must guarantee that there are no processes available(from the same set), so that the other set of processes may proceed his work.
+
+it was used the synchronization of execution
+
+
+Pseudo code
+Shared Variables
+Semaphore bx_sem, ax_sem, mutex;
+ax_n;
+bx_n;
+
+
+Initialization
+ax_sem = 1;
+bx_sen = mutex = 0;
+ax_n=numproc_a
+bx_n=numproc_b
+
+
+Main - setAx
+    for (numproc_a)
+        switch(fork())
+            case 0:
+                down(ax_sem)          
+                //do work
+                sleep(1)
+                ax_n--;
+                if(ax_n==0)
+                    up(bx_sem)
+                    down(mutex)
+                up(ax_sem)
+                sleep(5)
+                ax_n++;
+                break;
+
+
+Main - setAx
+    for (numproc_b)
+        switch(fork())
+            case 0:
+                down(bx_sem)          
+                //do work
+                sleep(1)
+                bx_n--;
+                if(ax_n==0)
+                    up(mutex)
+                    down(bx_sem)
+                up(bx_sem)
+                sleep(5)
+                ax_n++;
+                break;
