@@ -1,0 +1,505 @@
+./testpar 1 100 us
+[PID: 78228] Child process created!
+[PID: 78228] Child process finished!
+Execution time: 1373 microseconds
+./testpar 1 500 us
+[PID: 78230] Child process created!
+[PID: 78230] Child process finished!
+Execution time: 414 microseconds
+./testpar 1 1 ms
+[PID: 78232] Child process created!
+[PID: 78232] Child process finished!
+Execution time: 291 microseconds
+./testpar 1 10 ms
+[PID: 78234] Child process created!
+[PID: 78234] Child process finished!
+Execution time: 324 microseconds
+./testpar 1 50 ms
+[PID: 78236] Child process created!
+[PID: 78236] Child process finished!
+Execution time: 331 microseconds
+./testpar 1 500 ms
+[PID: 78238] Child process created!
+[PID: 78238] Child process finished!
+Execution time: 330 microseconds
+./testpar 1 1 s
+[PID: 78240] Child process created!
+[PID: 78240] Child process finished!
+Execution time: 1001927 microseconds
+./testpar 2 100 us
+[PID: 78243] Child process created!
+[PID: 78243] Child process finished!
+[PID: 78244] Child process created!
+[PID: 78244] Child process finished!
+Execution time: 1585 microseconds
+./testpar 2 500 us
+[PID: 78246] Child process created!
+[PID: 78246] Child process finished!
+[PID: 78247] Child process created!
+[PID: 78247] Child process finished!
+Execution time: 4715 microseconds
+./testpar 2 1 ms
+[PID: 78249] Child process created!
+[PID: 78249] Child process finished!
+[PID: 78250] Child process created!
+[PID: 78250] Child process finished!
+Execution time: 409 microseconds
+./testpar 2 10 ms
+[PID: 78252] Child process created!
+[PID: 78252] Child process finished!
+[PID: 78253] Child process created!
+[PID: 78253] Child process finished!
+Execution time: 361 microseconds
+./testpar 2 50 ms
+[PID: 78255] Child process created!
+[PID: 78255] Child process finished!
+[PID: 78256] Child process created!
+[PID: 78256] Child process finished!
+Execution time: 474 microseconds
+./testpar 2 500 ms
+[PID: 78258] Child process created!
+[PID: 78258] Child process finished!
+[PID: 78259] Child process created!
+[PID: 78259] Child process finished!
+Execution time: 445 microseconds
+./testpar 2 1 s
+[PID: 78261] Child process created!
+[PID: 78262] Child process created!
+[PID: 78261] Child process finished!
+[PID: 78262] Child process finished!
+Execution time: 1001816 microseconds
+./testpar 4 100 us
+[PID: 78264] Child process created!
+[PID: 78264] Child process finished!
+[PID: 78266] Child process created!
+[PID: 78265] Child process created!
+[PID: 78266] Child process finished!
+[PID: 78265] Child process finished!
+[PID: 78267] Child process created!
+[PID: 78267] Child process finished!
+Execution time: 782 microseconds
+./testpar 4 500 us
+[PID: 78269] Child process created!
+[PID: 78269] Child process finished!
+[PID: 78270] Child process created!
+[PID: 78270] Child process finished!
+[PID: 78271] Child process created!
+[PID: 78271] Child process finished!
+[PID: 78272] Child process created!
+[PID: 78272] Child process finished!
+Execution time: 620 microseconds
+./testpar 4 1 ms
+[PID: 78274] Child process created!
+[PID: 78274] Child process finished!
+[PID: 78275] Child process created!
+[PID: 78275] Child process finished!
+[PID: 78276] Child process created!
+[PID: 78276] Child process finished!
+[PID: 78277] Child process created!
+[PID: 78277] Child process finished!
+Execution time: 599 microseconds
+./testpar 4 10 ms
+[PID: 78279] Child process created!
+[PID: 78279] Child process finished!
+[PID: 78280] Child process created!
+[PID: 78280] Child process finished!
+[PID: 78281] Child process created!
+[PID: 78281] Child process finished!
+[PID: 78282] Child process created!
+[PID: 78282] Child process finished!
+Execution time: 618 microseconds
+./testpar 4 50 ms
+[PID: 78284] Child process created!
+[PID: 78284] Child process finished!
+[PID: 78285] Child process created!
+[PID: 78285] Child process finished!
+[PID: 78286] Child process created!
+[PID: 78286] Child process finished!
+[PID: 78287] Child process created!
+[PID: 78287] Child process finished!
+Execution time: 597 microseconds
+./testpar 4 500 ms
+[PID: 78289] Child process created!
+[PID: 78289] Child process finished!
+[PID: 78290] Child process created!
+[PID: 78290] Child process finished!
+[PID: 78291] Child process created!
+[PID: 78291] Child process finished!
+[PID: 78292] Child process created!
+[PID: 78292] Child process finished!
+Execution time: 562 microseconds
+./testpar 4 1 s
+[PID: 78294] Child process created!
+[PID: 78295] Child process created!
+[PID: 78296] Child process created!
+[PID: 78297] Child process created!
+[PID: 78294] Child process finished!
+[PID: 78296] Child process finished!
+[PID: 78295] Child process finished!
+[PID: 78297] Child process finished!
+Execution time: 1005514 microseconds
+./testpar 8 100 us
+[PID: 78299] Child process created!
+[PID: 78299] Child process finished!
+[PID: 78300] Child process created!
+[PID: 78300] Child process finished!
+[PID: 78301] Child process created!
+[PID: 78301] Child process finished!
+[PID: 78302] Child process created!
+[PID: 78302] Child process finished!
+[PID: 78303] Child process created!
+[PID: 78303] Child process finished!
+[PID: 78304] Child process created!
+[PID: 78304] Child process finished!
+[PID: 78305] Child process created!
+[PID: 78305] Child process finished!
+[PID: 78306] Child process created!
+[PID: 78306] Child process finished!
+Execution time: 1230 microseconds
+./testpar 8 500 us
+[PID: 78308] Child process created!
+[PID: 78308] Child process finished!
+[PID: 78309] Child process created!
+[PID: 78309] Child process finished!
+[PID: 78310] Child process created!
+[PID: 78310] Child process finished!
+[PID: 78311] Child process created!
+[PID: 78311] Child process finished!
+[PID: 78312] Child process created!
+[PID: 78312] Child process finished!
+[PID: 78313] Child process created!
+[PID: 78313] Child process finished!
+[PID: 78314] Child process created!
+[PID: 78314] Child process finished!
+[PID: 78315] Child process created!
+[PID: 78315] Child process finished!
+Execution time: 1061 microseconds
+./testpar 8 1 ms
+[PID: 78317] Child process created!
+[PID: 78317] Child process finished!
+[PID: 78318] Child process created!
+[PID: 78318] Child process finished!
+[PID: 78319] Child process created!
+[PID: 78319] Child process finished!
+[PID: 78320] Child process created!
+[PID: 78320] Child process finished!
+[PID: 78321] Child process created!
+[PID: 78321] Child process finished!
+[PID: 78322] Child process created!
+[PID: 78322] Child process finished!
+[PID: 78323] Child process created!
+[PID: 78323] Child process finished!
+[PID: 78324] Child process created!
+[PID: 78324] Child process finished!
+Execution time: 1136 microseconds
+./testpar 8 10 ms
+[PID: 78326] Child process created!
+[PID: 78326] Child process finished!
+[PID: 78327] Child process created!
+[PID: 78327] Child process finished!
+[PID: 78328] Child process created!
+[PID: 78328] Child process finished!
+[PID: 78329] Child process created!
+[PID: 78329] Child process finished!
+[PID: 78330] Child process created!
+[PID: 78330] Child process finished!
+[PID: 78331] Child process created!
+[PID: 78331] Child process finished!
+[PID: 78332] Child process created!
+[PID: 78332] Child process finished!
+[PID: 78333] Child process created!
+[PID: 78333] Child process finished!
+Execution time: 1085 microseconds
+./testpar 8 50 ms
+[PID: 78335] Child process created!
+[PID: 78335] Child process finished!
+[PID: 78336] Child process created!
+[PID: 78336] Child process finished!
+[PID: 78337] Child process created!
+[PID: 78337] Child process finished!
+[PID: 78338] Child process created!
+[PID: 78338] Child process finished!
+[PID: 78339] Child process created!
+[PID: 78339] Child process finished!
+[PID: 78340] Child process created!
+[PID: 78340] Child process finished!
+[PID: 78341] Child process created!
+[PID: 78341] Child process finished!
+[PID: 78342] Child process created!
+[PID: 78342] Child process finished!
+Execution time: 1078 microseconds
+./testpar 8 500 ms
+[PID: 78344] Child process created!
+[PID: 78344] Child process finished!
+[PID: 78345] Child process created!
+[PID: 78345] Child process finished!
+[PID: 78346] Child process created!
+[PID: 78346] Child process finished!
+[PID: 78347] Child process created!
+[PID: 78347] Child process finished!
+[PID: 78348] Child process created!
+[PID: 78348] Child process finished!
+[PID: 78349] Child process created!
+[PID: 78349] Child process finished!
+[PID: 78350] Child process created!
+[PID: 78350] Child process finished!
+[PID: 78351] Child process created!
+[PID: 78351] Child process finished!
+Execution time: 1032 microseconds
+./testpar 8 1 s
+[PID: 78353] Child process created!
+[PID: 78354] Child process created!
+[PID: 78355] Child process created!
+[PID: 78356] Child process created!
+[PID: 78357] Child process created!
+[PID: 78358] Child process created!
+[PID: 78359] Child process created!
+[PID: 78360] Child process created!
+[PID: 78353] Child process finished!
+[PID: 78357] Child process finished!
+[PID: 78359] Child process finished!
+[PID: 78356] Child process finished!
+[PID: 78354] Child process finished!
+[PID: 78358] Child process finished!
+[PID: 78355] Child process finished!
+[PID: 78360] Child process finished!
+Execution time: 1003790 microseconds
+./testpar 16 100 us
+[PID: 78364] Child process created!
+[PID: 78364] Child process finished!
+[PID: 78365] Child process created!
+[PID: 78365] Child process finished!
+[PID: 78366] Child process created!
+[PID: 78366] Child process finished!
+[PID: 78367] Child process created!
+[PID: 78367] Child process finished!
+[PID: 78368] Child process created!
+[PID: 78368] Child process finished!
+[PID: 78369] Child process created!
+[PID: 78369] Child process finished!
+[PID: 78370] Child process created!
+[PID: 78370] Child process finished!
+[PID: 78371] Child process created!
+[PID: 78371] Child process finished!
+[PID: 78372] Child process created!
+[PID: 78372] Child process finished!
+[PID: 78373] Child process created!
+[PID: 78373] Child process finished!
+[PID: 78374] Child process created!
+[PID: 78374] Child process finished!
+[PID: 78375] Child process created!
+[PID: 78375] Child process finished!
+[PID: 78376] Child process created!
+[PID: 78376] Child process finished!
+[PID: 78377] Child process created!
+[PID: 78377] Child process finished!
+[PID: 78378] Child process created!
+[PID: 78378] Child process finished!
+[PID: 78379] Child process created!
+[PID: 78379] Child process finished!
+Execution time: 2341 microseconds
+./testpar 16 500 us
+[PID: 78381] Child process created!
+[PID: 78381] Child process finished!
+[PID: 78382] Child process created!
+[PID: 78382] Child process finished!
+[PID: 78383] Child process created!
+[PID: 78383] Child process finished!
+[PID: 78384] Child process created!
+[PID: 78384] Child process finished!
+[PID: 78385] Child process created!
+[PID: 78385] Child process finished!
+[PID: 78386] Child process created!
+[PID: 78386] Child process finished!
+[PID: 78387] Child process created!
+[PID: 78387] Child process finished!
+[PID: 78388] Child process created!
+[PID: 78388] Child process finished!
+[PID: 78389] Child process created!
+[PID: 78389] Child process finished!
+[PID: 78390] Child process created!
+[PID: 78390] Child process finished!
+[PID: 78391] Child process created!
+[PID: 78391] Child process finished!
+[PID: 78392] Child process created!
+[PID: 78392] Child process finished!
+[PID: 78393] Child process created!
+[PID: 78393] Child process finished!
+[PID: 78394] Child process created!
+[PID: 78394] Child process finished!
+[PID: 78395] Child process created!
+[PID: 78395] Child process finished!
+[PID: 78396] Child process created!
+[PID: 78396] Child process finished!
+Execution time: 2197 microseconds
+./testpar 16 1 ms
+[PID: 78398] Child process created!
+[PID: 78398] Child process finished!
+[PID: 78399] Child process created!
+[PID: 78399] Child process finished!
+[PID: 78400] Child process created!
+[PID: 78400] Child process finished!
+[PID: 78401] Child process created!
+[PID: 78401] Child process finished!
+[PID: 78402] Child process created!
+[PID: 78402] Child process finished!
+[PID: 78403] Child process created!
+[PID: 78403] Child process finished!
+[PID: 78404] Child process created!
+[PID: 78404] Child process finished!
+[PID: 78405] Child process created!
+[PID: 78405] Child process finished!
+[PID: 78406] Child process created!
+[PID: 78406] Child process finished!
+[PID: 78407] Child process created!
+[PID: 78407] Child process finished!
+[PID: 78408] Child process created!
+[PID: 78408] Child process finished!
+[PID: 78409] Child process created!
+[PID: 78409] Child process finished!
+[PID: 78410] Child process created!
+[PID: 78410] Child process finished!
+[PID: 78411] Child process created!
+[PID: 78411] Child process finished!
+[PID: 78412] Child process created!
+[PID: 78412] Child process finished!
+[PID: 78413] Child process created!
+[PID: 78413] Child process finished!
+Execution time: 2136 microseconds
+./testpar 16 10 ms
+[PID: 78415] Child process created!
+[PID: 78415] Child process finished!
+[PID: 78416] Child process created!
+[PID: 78416] Child process finished!
+[PID: 78417] Child process created!
+[PID: 78417] Child process finished!
+[PID: 78418] Child process created!
+[PID: 78418] Child process finished!
+[PID: 78419] Child process created!
+[PID: 78419] Child process finished!
+[PID: 78420] Child process created!
+[PID: 78420] Child process finished!
+[PID: 78421] Child process created!
+[PID: 78421] Child process finished!
+[PID: 78422] Child process created!
+[PID: 78422] Child process finished!
+[PID: 78423] Child process created!
+[PID: 78423] Child process finished!
+[PID: 78424] Child process created!
+[PID: 78424] Child process finished!
+[PID: 78425] Child process created!
+[PID: 78425] Child process finished!
+[PID: 78426] Child process created!
+[PID: 78426] Child process finished!
+[PID: 78427] Child process created!
+[PID: 78427] Child process finished!
+[PID: 78428] Child process created!
+[PID: 78428] Child process finished!
+[PID: 78429] Child process created!
+[PID: 78429] Child process finished!
+[PID: 78430] Child process created!
+[PID: 78430] Child process finished!
+Execution time: 2013 microseconds
+./testpar 16 50 ms
+[PID: 78432] Child process created!
+[PID: 78432] Child process finished!
+[PID: 78433] Child process created!
+[PID: 78433] Child process finished!
+[PID: 78435] Child process created!
+[PID: 78436] Child process created!
+[PID: 78437] Child process created!
+[PID: 78443] Child process created!
+[PID: 78435] Child process finished!
+[PID: 78437] Child process finished!
+[PID: 78436] Child process finished!
+[PID: 78438] Child process created!
+[PID: 78438] Child process finished!
+[PID: 78443] Child process finished!
+[PID: 78439] Child process created!
+[PID: 78439] Child process finished!
+[PID: 78441] Child process created!
+[PID: 78440] Child process created!
+[PID: 78441] Child process finished!
+[PID: 78442] Child process created!
+[PID: 78444] Child process created!
+[PID: 78442] Child process finished!
+[PID: 78444] Child process finished!
+[PID: 78445] Child process created!
+[PID: 78445] Child process finished!
+[PID: 78446] Child process created!
+[PID: 78446] Child process finished!
+[PID: 78447] Child process created!
+[PID: 78447] Child process finished!
+hed!
+[PID: 78440] Child process finished!
+[PID: 78434] Child process created!
+[PID: 78434] Child process finished!
+Execution time: 2769 microseconds
+./testpar 16 500 ms
+[PID: 78449] Child process created!
+[PID: 78449] Child process finished!
+[PID: 78450] Child process created!
+[PID: 78450] Child process finished!
+[PID: 78451] Child process created!
+[PID: 78451] Child process finished!
+[PID: 78452] Child process created!
+[PID: 78452] Child process finished!
+[PID: 78453] Child process created!
+[PID: 78453] Child process finished!
+[PID: 78454] Child process created!
+[PID: 78454] Child process finished!
+[PID: 78455] Child process created!
+[PID: 78455] Child process finished!
+[PID: 78456] Child process created!
+[PID: 78456] Child process finished!
+[PID: 78457] Child process created!
+[PID: 78457] Child process finished!
+[PID: 78458] Child process created!
+[PID: 78458] Child process finished!
+[PID: 78459] Child process created!
+[PID: 78459] Child process finished!
+[PID: 78460] Child process created!
+[PID: 78460] Child process finished!
+[PID: 78462] Child process created!
+[PID: 78461] Child process created!
+[PID: 78462] Child process finished!
+[PID: 78461] Child process finished!
+[PID: 78463] Child process created!
+[PID: 78463] Child process finished!
+[PID: 78464] Child process created!
+[PID: 78464] Child process finished!
+Execution time: 2106 microseconds
+./testpar 16 1 s
+[PID: 78466] Child process created!
+[PID: 78467] Child process created!
+[PID: 78468] Child process created!
+[PID: 78469] Child process created!
+[PID: 78470] Child process created!
+[PID: 78471] Child process created!
+[PID: 78472] Child process created!
+[PID: 78473] Child process created!
+[PID: 78474] Child process created!
+[PID: 78475] Child process created!
+[PID: 78476] Child process created!
+[PID: 78477] Child process created!
+[PID: 78478] Child process created!
+[PID: 78479] Child process created!
+[PID: 78480] Child process created!
+[PID: 78481] Child process created!
+[PID: 78466] Child process finished!
+[PID: 78467] Child process finished!
+[PID: 78474] Child process finished!
+[PID: 78476] Child process finished!
+[PID: 78468] Child process finished!
+[PID: 78469] Child process finished!
+[PID: 78470] Child process finished!
+[PID: 78471] Child process finished!
+[PID: 78475] Child process finished!
+[PID: 78472] Child process finished!
+[PID: 78473] Child process finished!
+[PID: 78477] Child process finished!
+[PID: 78479] Child process finished!
+[PID: 78478] Child process finished!
+[PID: 78480] Child process finished!
+[PID: 78481] Child process finished!
+Execution time: 1005297 microseconds
