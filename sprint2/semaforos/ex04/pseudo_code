@@ -1,0 +1,19 @@
+mutex = 0;
+mutex1 = 1;
+mutex2 = 0;
+
+
+CHILD1
+down(mutex1)
+puts(CHILD1_MSG)
+up(mutex)
+
+PARENT
+down(mutex)
+puts(PARENT_MSG)
+up(mutex2)
+
+CHILD2
+down(mutex2)
+puts(CHILD2_MSG)
+up(mutex1)

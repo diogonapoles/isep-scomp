@@ -1,0 +1,34 @@
+Producer-Consumer pattern. The child processes can be considered producers that generate random numbers 
+and write them to the shared memory. The parent process acts as the consumer, finding the maximum value 
+in the shared memory. The semaphores are used for synchronization and mutual exclusion to ensure proper 
+access to the shared resources.
+
+mutex;
+mutex1,mutex2,mutex4 =1;
+
+
+
+# Child process P_MAX
+while (1):
+    down(mutex2)
+        print WARNING
+
+# Child processes (i = 0 to 4)
+        down(mutex1);
+        if bigger
+          up(mutex2);
+        
+        up(mutex1);
+
+        block of ten
+          down(mutex4);
+          place in the final arr        //only one is performing
+          up(mutex4);
+
+
+
+# Parent process
+for (i = 0 to 4):
+        wait(NULL)
+        clear all childs
+

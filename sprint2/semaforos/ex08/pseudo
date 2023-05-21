@@ -1,0 +1,16 @@
+this exercice is a reader - writer with muitiple reader at the same time
+
+insert
+down 
+insert person
+up
+
+consult 
+down
+insert number 
+up
+
+consult_all
+down 
+show
+up

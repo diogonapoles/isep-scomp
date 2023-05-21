@@ -1,0 +1,24 @@
+mutual exclusion
+
+
+all set at 1
+
+entering
+
+down door1
+down capacity
+check 
+    up door1
+down capacity
+
+up door1
+
+
+
+
+leaving
+down door2
+down capacity
+sub capacity
+up capacity
+up door2
