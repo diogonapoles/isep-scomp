@@ -1,0 +1,27 @@
+sem_t mutex = 0;
+sem_t wrt = 1;
+
+
+writer;
+
+down (wrt);
+
+writing;
+
+random_number = rand() % 100;
+if (random_number <= 30) then delete previous written string;
+ 
+up (wrt);
+
+
+
+reader;
+
+down (mutex);
+
+reading;
+
+up (mutex);
+
+
+//Problema dos leitores e escritores
