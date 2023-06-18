@@ -29,7 +29,7 @@ Club full:
 (Each client priority executes a different code)
     NORMAL:
         down(special);
-        up(vip);
+        down(vip);
 
         down(general);
 
@@ -65,7 +65,7 @@ Club full:
         down(mutex_vip);
         data->vip_waiting++;
         if (data->vip_waiting == 1)
-            down(special);
+            down(vip);
         up(mutex_vip);
 
         down(general);
@@ -73,7 +73,7 @@ Club full:
         down(mutex_vip);
         data->vip_waiting--;
         if (data->vip_waiting == 1)
-            up(special);
+            up(vip);
         up(mutex_vip);
 
         // have fun at the club

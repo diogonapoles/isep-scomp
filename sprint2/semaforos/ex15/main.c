@@ -241,7 +241,7 @@ int main(void) {
         switch (priority) {
         case NORMAL:
           down(special);
-          up(vip);
+          down(vip);
 
           down(general);
 
@@ -283,7 +283,7 @@ int main(void) {
           down(mutex_vip);
           data->vip_waiting++;
           if (data->vip_waiting == 1)
-            down(special);
+            down(vip);
           up(mutex_vip);
 
           down(general);
@@ -291,7 +291,7 @@ int main(void) {
           down(mutex_vip);
           data->vip_waiting--;
           if (data->vip_waiting == 1)
-            up(special);
+            up(vip);
           up(mutex_vip);
 
           printf("Client %2d |%9s| Someone left! Client entered.\n", i + 1,
